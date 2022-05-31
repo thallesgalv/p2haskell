@@ -21,7 +21,8 @@ import Common.Route
 
 sobre :: (DomBuilder t m, PostBuild t m, MonadHold t m) => m ()
 sobre = do
+elAttr "section" ("id" =: "sobre") $ do
   el "h1" $ text "Sobre"
+  el "p" $ text "Projeto desenvolvido pelos alunos Daniel Mingoranse, Felipe Gameiro e Thalles Galvão"
   return ()
-
   

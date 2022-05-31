@@ -18,10 +18,14 @@ import Reflex.Dom.Core
 import Common.Api
 import Common.Route
 
+import Components
 
 criar :: (DomBuilder t m, PostBuild t m, MonadHold t m) => m ()
 criar = do
-  el "h1" $ text "Criar"
+elAttr "section" ("id" =: "criar") $ do
+  el "h1" $ text "Criar Tarefa"
+  elAttr "div" ("class" =: "form") $ do
+    input
+    submit
   return ()
-
   

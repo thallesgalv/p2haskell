@@ -21,7 +21,14 @@ import Common.Route
 
 tarefas :: (DomBuilder t m, PostBuild t m, MonadHold t m) => m ()
 tarefas = do
+elAttr "section" ("id" =: "tarefas") $ do
   el "h1" $ text "Tarefas"
+  elAttr "div" ("class" =: "card") $ do
+    el "h2" $ text "Lista de Tarefas:"
+    el "ul" $ do
+      el "li" (text "Tarefa 1")
+      el "li" (text "Tarefa 2")
+      el "li" (text "Tarefa 3")
   return ()
 
   
