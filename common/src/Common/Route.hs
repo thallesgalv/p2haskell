@@ -46,10 +46,10 @@ fullRouteEncoder = mkFullRouteEncoder
   (\case
       FrontendRoute_Main -> PathEnd $ unitEncoder mempty)
 
-  checFullREnc :: Encoder Identity Identity (R (FullRouute BackendRout FrontendROute)) PageName
-  checFullREnc = checkEncoder fullRouteEncoder & \case
-    Left err -> error $ unpack err
-    Right encoder -> encoder
+checFullREnc :: Encoder Identity Identity (R (FullRoute BackendRoute FrontendRoute)) PageName
+checFullREnc = checkEncoder fullRouteEncoder & \case
+  Left err -> error $ unpack err
+  Right encoder -> encoder
 
 concat <$> mapM deriveRouteComponent
   [ ''BackendRoute
