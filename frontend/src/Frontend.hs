@@ -18,6 +18,7 @@ import Reflex.Dom.Core
 import Common.Api
 import Common.Route
 import Menu
+import Control.Monad;
 
 getPath :: T.Text
 getPath = renderBackendRoute checFullREnc $ BackendRoute_Todo :/ ()
@@ -42,8 +43,11 @@ frontend = Frontend
       el "title" $ text "Todo List P2 Haskell"
       elAttr "link" ("href" =: $(static "main.css") <> "type" =: "text/css" <> "rel" =: "stylesheet") blank
   , _frontend_body = do
-      mainPag 
-      -- aqui iria o req. Mas não consigo renderizar ele junto com o mainPag, ou mesmo dentro do router create.
+      elAttr "section" ("id" =: "criar") $ do
+       el "h1" $ text "Criar Tarefa"
+       elAttr "div" ("class" =: "form") $ do
+        req 
+      -- aqui iria o mainPag. Mas não consigo renderizar esse req dentro do Create.hs (o req está exatamente igual ao demonstrado em aula)
   
       return ()
   }
